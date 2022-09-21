@@ -5,9 +5,18 @@ const prisma = new PrismaClient()
 async function main() {
   const result = await prisma.courses.create({
     data: {
-      duration: 200,
-      name: "Next.js 101",
-      description: "Curso completo de next.js"
+      name: 'Curso de React.js',
+      duration: 100,
+      teacher: {
+        connectOrCreate: {
+          where: {
+            name: 'Alan Jhonatan',
+          },
+          create: {
+            name: 'Alan Jhonatan'
+          }
+        }
+      }
     }
   })
 
